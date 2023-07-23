@@ -5,14 +5,15 @@ use Firebase\JWT\Key;
 use Exception;
 class JWTToken{
 
-    public static function CreateToken($userEmail):string{
+    public static function CreateToken($userEmail,$userId):string{//open close solid principle//agile a kaj korle solid
 
         $key=env("JWT_KET");
         $payload=[
             'iss'=>"laravel-jwt",
             'iat'=>time(),
             'exp'=>time()+60*60,
-            'userEmail'=>$userEmail
+            'userEmail'=>$userEmail,
+            'userId'=>$userId
         ];
         return JWT::encode($payload,$key,'HS256');
     } 
@@ -24,12 +25,13 @@ class JWTToken{
             'iss'=>"laravel-jwt",
             'iat'=>time(),
             'exp'=>time()+60*5,
-            'userEmail'=>$userEmail
+            'userEmail'=>$userEmail,
+            'userId'=>0
         ];
         return JWT::encode($payload,$key,'HS256');
     } 
 
-    public static function VerifyToken($token):string{
+    public static function VerifyToken($token):object|string{
 
         try{
             if($token == null){//logout korle kno token thakbe na tai token null hobe r tokn unauthorized hobe
@@ -37,7 +39,8 @@ class JWTToken{
             }else{
                 $key=env('JWT_KET');
                 $decode=JWT::decode($token,new Key($key,'HS256'));
-                return $decode->userEmail;
+                //return $decode->userEmail;--before
+                return $decode;
             }
             
         }

@@ -14,11 +14,15 @@ class UserController extends Controller
 
     function userLogin(Request $request){
 
-       $result=User::where($request->input())->count();
+    //    $result=User::where($request->input())->count();//before
+       $result=User::where('email','=',$request->input('email'))
+                    ->where('password','=',$request->input('password'))
+                    ->select('id')->first();
 
-       if($result==1){
+       // return $result;----akan theke id paici tai id ta tan diye nice niye nici 
+       if($result !==null){
 
-       $token=JWTToken::CreateToken($request->input('email'));
+       $token=JWTToken::CreateToken($request->input('email'),$result->id);
        return response()->json([
         'status'=>"success",
         'message'=>"Login Successfully",
@@ -99,7 +103,7 @@ class UserController extends Controller
             User::where('email',$email)->update(['otp'=>0]);
 
          
-            $token=JWTToken::CreateTokenSetPassword($request->input('email'));
+            $token=JWTToken::CreateTokenSetPassword($request->input('email'),$count->id);
 
             return response()->json([
                 'status'=>"success",
@@ -124,11 +128,6 @@ class UserController extends Controller
     }
 
 
-
-
-
-
-
     function setPassword(Request $request){    
         
 
@@ -148,6 +147,40 @@ class UserController extends Controller
 
         }
     }
+
+    function getUser(Request $request){
+
+        $email=$request->header('email');
+        $user=User::where('email','=',$email)->first();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Request Successful',
+            'data' => $user
+        ],200);
+
+    }
+
+    function profileUpdate(Request $request){
+
+        $email=$request->header('email');
+
+        $res=User::where('email','=',$email)->update([
+            'firstName'=>$request->input('firstName'),
+            'lastName'=>$request->input('lastName'),
+            'mobile'=>$request->input('mobile'),
+            'password'=>$request->input('password')
+        ]);
+
+        return response()->json([
+            'status'=>'success',
+            'message'=>"update success",
+            "data"=>$res
+        ],200);
+
+    }
+
+
+
 
 
     function registration(){
@@ -170,6 +203,9 @@ class UserController extends Controller
     }
     function dashboard(){
         return view('pages.dashboard.dashboard-page');
+    }
+    function profile(){
+        return view('pages.dashboard.profile-pages');
     }
    
 }
