@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\UserController;
-use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CatrgoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Middleware\TokenVerificationMiddleware;
 
 
 Route::post('/user-registration',[UserController::class,'userRegistration']);
@@ -31,3 +33,16 @@ Route::get('/profile',[UserController::class,'profile'])->middleware([TokenVerif
 
 Route::get('/logout',[UserController::class,'userLogOut']);
 // html 5 back history 
+
+
+// customer route api
+Route::get('/getCustomer',[CustomerController::class,'getCustomer'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/create-customer',[CustomerController::class,'createCustomer'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/update-customer',[CustomerController::class,'updateCustomer'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/delete-customer',[CustomerController::class,'deleteCustomer'])->middleware([TokenVerificationMiddleware::class]);
+
+// category route api
+Route::get('/list-category',[CatrgoryController::class,'listCategory'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/create-category',[CatrgoryController::class,'createCategory'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/update-category',[CatrgoryController::class,'updateCategory'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/delete-category',[CatrgoryController::class,'deleteCategory'])->middleware([TokenVerificationMiddleware::class]);
