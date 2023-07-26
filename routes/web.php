@@ -29,6 +29,19 @@ Route::get('/dashboard',[UserController::class,'dashboard'])->middleware([TokenV
 Route::get('/profile',[UserController::class,'profile'])->middleware([TokenVerificationMiddleware::class]);
 
 
+
+// Category Pages
+Route::get('/category',[CatrgoryController::class,'category'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/customer',[CustomerController::class,'customer'])->middleware([TokenVerificationMiddleware::class]);
+
+
+
+
+
+
+
+
+
 // logout route
 
 Route::get('/logout',[UserController::class,'userLogOut']);

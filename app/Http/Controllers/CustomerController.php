@@ -6,7 +6,12 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
-{
+{   
+    function customer(){
+        
+        return view('pages.dashboard.customer-page');
+    }
+    
     function getCustomer(Request $request){
 
         $userId=$request->header('id');

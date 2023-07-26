@@ -37,4 +37,10 @@ class CatrgoryController extends Controller
         $userId=$request->header('id');
         return Category::where('id',$id)->where('user_id',$userId)->delete();
     }
+
+
+
+    function category(){
+        return view('pages.dashboard.categroy-page');
+    }
 }
