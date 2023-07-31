@@ -26,7 +26,7 @@ class UserController extends Controller
        return response()->json([
         'status'=>"success",
         'message'=>"Login Successfully",
-        // 'token'=>$token
+        'token'=>$token//mobile applicatoin er jnno body te token pathaice
        ],200)->cookie('token',$token,60*60*24);
 
        }else{
@@ -108,7 +108,7 @@ class UserController extends Controller
             return response()->json([
                 'status'=>"success",
                 'message'=>"otp verify",
-                'token'=>$token
+                'token'=>$token//mobile applicatoin er jnno body te token pathaice
             ],200)->cookie('token',$token,60*60*24);
         }else{
 

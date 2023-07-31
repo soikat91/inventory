@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CatrgoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 
@@ -34,7 +35,7 @@ Route::get('/profile',[UserController::class,'profile'])->middleware([TokenVerif
 // Category Pages
 Route::get('/category',[CatrgoryController::class,'category'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/customer',[CustomerController::class,'customer'])->middleware([TokenVerificationMiddleware::class]);
-
+Route::get('/product',[ProductController::class,'product'])->middleware([TokenVerificationMiddleware::class]);
 
 
 
@@ -67,3 +68,10 @@ Route::get('/product-list',[ProductController::class,'getProduct'])->middleware(
 Route::post('/product-create',[ProductController::class,'createProduct'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/product-update',[ProductController::class,'updateProduct'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/product-delete',[ProductController::class,'deleteProduct'])->middleware([TokenVerificationMiddleware::class]);
+
+
+// dashboard Route Api
+
+Route::get('/total-customer',[DashBoardController::class,'totalCustomer'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/total-category',[DashBoardController::class,'totalCategory'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/total-product',[DashBoardController::class,'totalProduct'])->middleware([TokenVerificationMiddleware::class]);

@@ -19,6 +19,15 @@ class TokenVerificationMiddleware
     {   
         //$token=$request->header('token');
         $token=$request->cookie('token');
+
+        // mobile application theke jkn call korbe tkn token ta cookie te pabe na tkn header a pathabo token
+        // tai condition hobe jdi token null hy krn mobile a cookie thake na
+
+        if($token==null){
+            $token=$request->header('token');
+        }
+
+
         $result=JWTToken::VerifyToken($token);
         if($result=="unauthorized"){
 

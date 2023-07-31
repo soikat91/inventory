@@ -83,3 +83,16 @@
 
     </div>
 </div>
+
+<script>
+
+    async totalCustomer(){
+            
+        let url="/total-customer"
+
+        let res=await axios.get(url);
+        
+
+    }
+
+</script>

@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title></title>
-    <link rel="icon" type="image/x-icon" href="{{asset('/favicon.ico')}}" />
+   <link rel="icon" type="image/x-icon" href="{{asset('/favicon.ico')}}" />
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
     <link href="{{asset('css/animate.min.css')}}" rel="stylesheet" />
     <link href="{{asset('css/fontawesome.css')}}" rel="stylesheet" />
@@ -13,12 +13,31 @@
     <link href="{{asset('css/datatables.min.css')}}" rel="stylesheet" />
     <link href="{{asset('css/datatables-select.min.css')}}" rel="stylesheet" />
 
+   <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/toastify-js.js')}}"></script>
+    <script src="{{asset('js/axios.min.js')}}"></script>
+    <script src="{{asset('js/config.js')}}"></script>   
+    <script src="{{asset('js/bootstrap.bundle.js')}}"></script> 
+    <script src="{{asset('js/datatables.min.js')}}"></script>
+    <script src="{{asset('js/datatables-select.min.js')}}"></script>
+    {{-- <link rel="icon" type="image/x-icon" href="{{asset('/favicon.ico')}}" />
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/animate.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/fontawesome.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/toastify.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/datatables.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/datatables-select.min.css')}}" rel="stylesheet" />
+
+
+
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/toastify-js.js')}}"></script>
     <script src="{{asset('js/axios.min.js')}}"></script>
-    <script src="{{asset('js/config.js')}}"></script>    
+    <script src="{{asset('js/config.js')}}"></script>
+    <script src="{{asset('js/bootstrap.bundle.js')}}"></script>
     <script src="{{asset('js/datatables.min.js')}}"></script>
-    <script src="{{asset('js/datatables-select.min.js')}}"></script>
+    <script src="{{asset('js/datatables-select.min.js')}}"></script> --}}
 </head>
 
 <body>
@@ -74,7 +93,7 @@
         <i class="fa fa-chevron-circle-right  text-dark"></i>
         <span class="side-bar-item-caption">Category</span>
     </a>
-    <a href="{{url("/dashboard")}}" class="side-bar-item">
+    <a href="{{url("/product")}}" class="side-bar-item">
         <i class="fa fa-chevron-circle-right  text-dark"></i>
         <span class="side-bar-item-caption">Product</span>
     </a>
@@ -93,7 +112,7 @@
     @yield('content')
 </div>
 
-<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+
 
 <script>
     function MenuBarClickHandler() {
