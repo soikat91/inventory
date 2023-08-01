@@ -70,12 +70,16 @@
 
             $('.delete').on('click',function(){
                 let id=$(this).data('id')
-                alert(id)
+                //alert(id)
+                $('#delete-modal').modal('show')
+                $('#customerId').val(id)
+
             })
 
 
             tableData.DataTable({
-                lengthMenu:[1,5,10,10,20,30,40,50],
+                order:[['0','desc']],
+                lengthMenu:[5,10,10,20,30,40,50],
                 language:{
                     paginate:{
                         next:'&#8594;',

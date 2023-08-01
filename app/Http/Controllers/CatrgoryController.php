@@ -31,6 +31,13 @@ class CatrgoryController extends Controller
                     
         ]);
     }
+
+    function getCategoryId(Request $request){
+        $userId=$request->header('id');
+        $categoryId=$request->input('id');
+        return Category::where('id',$categoryId)->where('user_id',$userId)->first();
+    }
+
     function deleteCategory(Request $request){
 
         $id=$request->input('id');

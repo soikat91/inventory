@@ -59,9 +59,12 @@
 
       //specific row er id dhorte hobe ---post back kore korbo na----id diye dhre kj krbo
         //jquery work kora hoice karon data tables use krbo
-      $('.edit').on('click',function(){
+      $('.edit').on('click',async function(){
             let id=$(this).data('id')
-            alert(id);
+            await getCategoryId(id)
+            $('#update-modal').modal('show')
+       
+           // $('#categoryID').val(id)
 
       })
 
@@ -73,7 +76,7 @@
       })
       //datatable work
       tableData.DataTable({
-        lengthMenu:[1,5,10,10,20,30,40,50],
+        lengthMenu:[5,10,10,20,30,40,50],
         language:{
             paginate:{
                 next:'&#8594;',

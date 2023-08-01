@@ -61,6 +61,7 @@ Route::get('/list-category',[CatrgoryController::class,'listCategory'])->middlew
 Route::post('/create-category',[CatrgoryController::class,'createCategory'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/update-category',[CatrgoryController::class,'updateCategory'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/delete-category',[CatrgoryController::class,'deleteCategory'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/get-category-id',[CatrgoryController::class,'getCategoryId'])->middleware([TokenVerificationMiddleware::class]);
 
 // product route api
 
