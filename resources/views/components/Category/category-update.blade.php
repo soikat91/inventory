@@ -37,8 +37,6 @@
         
     }
 
-
-
     // async function Update(){
 
     //     let categoryNameupdate=document.getElementById('categoryNameupdate').value
@@ -60,7 +58,7 @@
 
     //     }
     // }
-    $('#updateData').on('click',async function(e){
+    $('#updateData').on('submit',async function(e){
         e.preventDefault()
         let categoryNameupdate=document.getElementById('categoryNameupdate').value
         let categoryID=document.getElementById('categoryID').value
@@ -68,6 +66,7 @@
             errorToast('Name Required')
         }else{          
             $('#update-modal').modal('hide') 
+            // document.getElementById('update-model-close').click()        
             showLoader()
             let res=await axios.post('/update-category',{name:categoryNameupdate,id:categoryID})
             hideLoader()
@@ -78,7 +77,7 @@
             }else{
                 errorToast("Failed Request")
             }
-
+            
         }
 
     })

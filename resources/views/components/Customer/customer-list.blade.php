@@ -65,7 +65,9 @@
             $('.edit').on('click',function(){
 
                 let id=$(this).data('id');
-                alert(id)
+                // alert(id)
+                getCustomerId(id)
+                $('#update-modal').modal('show')
             })
 
             $('.delete').on('click',function(){

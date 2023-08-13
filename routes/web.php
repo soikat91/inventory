@@ -56,6 +56,10 @@ Route::post('/create-customer',[CustomerController::class,'createCustomer'])->mi
 Route::post('/update-customer',[CustomerController::class,'updateCustomer'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/delete-customer',[CustomerController::class,'deleteCustomer'])->middleware([TokenVerificationMiddleware::class]);
 
+Route::post('/customer-by-id',[CustomerController::class,'customerById'])->middleware([TokenVerificationMiddleware::class]);
+
+
+
 // category route api
 Route::get('/list-category',[CatrgoryController::class,'listCategory'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/create-category',[CatrgoryController::class,'createCategory'])->middleware([TokenVerificationMiddleware::class]);
@@ -69,6 +73,7 @@ Route::get('/product-list',[ProductController::class,'getProduct'])->middleware(
 Route::post('/product-create',[ProductController::class,'createProduct'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/product-update',[ProductController::class,'updateProduct'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/product-delete',[ProductController::class,'deleteProduct'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/product-by-id',[ProductController::class,'productById'])->middleware([TokenVerificationMiddleware::class]);
 
 
 // dashboard Route Api

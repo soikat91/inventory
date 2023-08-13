@@ -29,6 +29,13 @@ class CustomerController extends Controller
         ]);
     }
 
+//customer update korar jnno customer id bar kore nicu erpr customer id niye data soho kore update korbo
+    function customerById(Request $request){        
+        $id=$request->input('id');
+        $userId=$request->header('id');
+        return Customer::where('id',$id)->where('user_id',$userId)->first();
+    }
+
     function updateCustomer(Request $request){
        
         $id=$request->input('id');

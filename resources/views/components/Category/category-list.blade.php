@@ -70,8 +70,10 @@
 
       $('.delete').on('click',function(){
 
-        let id=$(this).data('id')
-        alert(id)
+        let id=$(this).data('id')      
+        $('#delete-modal').modal('show')
+        $('#categoryId').val(id)
+
 
       })
       //datatable work

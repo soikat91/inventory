@@ -14,10 +14,7 @@ class ProductController extends Controller
     }
     function getProduct(Request $request){
         
-        $userId=$request->header('id');    
-
-
-
+        $userId=$request->header('id');
         return Product::where('user_id',$userId)->get();
     }
 
@@ -74,8 +71,7 @@ class ProductController extends Controller
                 'price'=>$request->input('price'),
                 'unit'=>$request->input('unit'),
                 'image_url'=>$img_url,
-                'category_id'=>$request->input('category_id'),
-                'user_id'=>$userId
+                'category_id'=>$request->input('category_id')                
             ]);
         }else{
 
@@ -83,15 +79,20 @@ class ProductController extends Controller
                 'name'=>$request->input('name'),
                 'price'=>$request->input('price'),
                 'unit'=>$request->input('unit'),              
-                'category_id'=>$request->input('category_id'),
-                'user_id'=>$userId
+                'category_id'=>$request->input('category_id')             
             ]);
             
-        }
-       
-
+        } 
 
         
+    }
+
+    function productById(Request $request){
+
+        $userId=$request->header('id');
+        $productId=$request->input('id');
+        return Product::where('user_id',$userId)->where('id',$productId)->first();
+
     }
     function deleteProduct(Request $request){
 
