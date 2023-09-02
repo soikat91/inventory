@@ -28,9 +28,6 @@
 <div>
     @yield('content')
 </div>
-<script>
-
-</script>
 
 <script src="{{asset('js/bootstrap.bundle.js')}}"></script>
 
