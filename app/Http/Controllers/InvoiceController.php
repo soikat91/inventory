@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Exception;
 use App\Models\Invoice;
 use App\Models\Product;
@@ -12,7 +13,11 @@ use Faker\Extension\Extension;
 use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
-{
+{   
+    function invoice(){
+        return view('pages.dashboard.sale-page');
+
+    }
     function invoiceCreate(Request $request){      
 
         try{

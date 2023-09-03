@@ -97,7 +97,7 @@
         <i class="fa fa-chevron-circle-right  text-dark"></i>
         <span class="side-bar-item-caption">Product</span>
     </a>
-    <a href="{{url("/dashboard")}}" class="side-bar-item">
+    <a href="{{url("/invoice")}}" class="side-bar-item">
         <i class="fa fa-chevron-circle-right  text-dark"></i>
         <span class="side-bar-item-caption">Invoice</span>
     </a>
