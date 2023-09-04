@@ -17,6 +17,11 @@ class InvoiceController extends Controller
     function invoice(){
         return view('pages.dashboard.sale-page');
 
+    } 
+
+
+    function invoiceReportList(){
+        return view('pages.dashboard.invoice-page');
     }
     function invoiceCreate(Request $request){      
 
