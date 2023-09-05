@@ -61,49 +61,47 @@
 
 
 <script>
+    
+    async function InvoiceDetails(cus_id,invoice_id){
 
+            showLoader()
+            let res= await axios.post('/invoice-details',{inv_id:invoice_id,cus_id:cus_id})
+            hideLoader()
 
-    // async function InvoiceDetails(cus_id,inv_id) {
+            document.getElementById('CName').innerText=res.data['customer']['name']
+            document.getElementById('CEmail').innerText=res.data['customer']['email']
+            document.getElementById('CId').innerText=res.data['customer']['user_id']
+            document.getElementById('total').innerText=res.data['invoice']['total']
+            document.getElementById('payable').innerText=res.data['invoice']['payable']
+            document.getElementById('vat').innerText=res.data['invoice']['vat']
+            document.getElementById('discount').innerText=res.data['invoice']['discount']
+            let itemList=$('#invoiceList')
+            itemList.empty()
+            res.data['product'].forEach(function(item){
 
-    //     showLoader()
-    //     let res=await axios.post("/invoice-details",{cus_id:cus_id,inv_id:inv_id})
-    //     hideLoader();
+                let row=`
+                        <tr>
+                            <td>${item['product']['name']}</td>
+                            <td>${item['qty']}</td>
+                            <td>${item['sale_price']}</td>                           
+                        </tr>
+                `
+                itemList.append(row)
+            })           
 
-    //     document.getElementById('CName').innerText=res.data['customer']['name']
-    //     document.getElementById('CId').innerText=res.data['customer']['user_id']
-    //     document.getElementById('CEmail').innerText=res.data['customer']['email']
-    //     document.getElementById('total').innerText=res.data['invoice']['total']
-    //     document.getElementById('payable').innerText=res.data['invoice']['payable']
-    //     document.getElementById('vat').innerText=res.data['invoice']['vat']
-    //     document.getElementById('discount').innerText=res.data['invoice']['discount']
+    }
 
+    function PrintPage(){
 
-    //     let invoiceList=$('#invoiceList');
+        let printContent=document.getElementById('invoice').innerHTML // ekene print korbo je html ta dhra houyece
+        let originalContent=document.body.innerHTML      //original content body er mordhe rakha hoice
+        document.body.innerHTML=printContent      
+        window.print() //ei function diye print kora hy
 
-    //     invoiceList.empty();
-
-    //     res.data['product'].forEach(function (item,index) {
-    //         let row=`<tr class="text-xs">
-    //                     <td>${item['product']['name']}</td>
-    //                     <td>${item['qty']}</td>
-    //                     <td>${item['sale_price']}</td>
-    //                  </tr>`
-    //         invoiceList.append(row)
-    //     });
-
-
-
-    //     $("#details-modal").modal('show')
-    // }
-
-    // function PrintPage() {
-    //     let printContents = document.getElementById('invoice').innerHTML;
-    //     let originalContents = document.body.innerHTML;
-    //     document.body.innerHTML = printContents;
-    //     window.print();
-    //     document.body.innerHTML = originalContents;
-    //     setTimeout(function() {
-    //         location.reload();
-    //     }, 1000);
-    // }
+        document.body.innerHTML=originalContent
+        
+        setTimeout(function() {
+            location.reload()            
+        }, 1000);
+    }
 </script>

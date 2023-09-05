@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 
 
@@ -82,7 +83,12 @@ Route::post('/product-by-id',[ProductController::class,'productById'])->middlewa
 Route::get('/total-customer',[DashBoardController::class,'totalCustomer'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/total-category',[DashBoardController::class,'totalCategory'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/total-product',[DashBoardController::class,'totalProduct'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/total-invoice',[DashBoardController::class,'totalInvoice'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/total-sale',[DashBoardController::class,'totalSale'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/vat-collection',[DashBoardController::class,'vatCollection'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/total-collection',[DashBoardController::class,'totalCollection'])->middleware([TokenVerificationMiddleware::class]);
 
+Route::get('/summery',[DashBoardController::class,'summery'])->middleware([TokenVerificationMiddleware::class]);
 
 // invoice route api
 
@@ -91,5 +97,9 @@ Route::get('/invoice-list',[InvoiceController::class,'invoiceList'])->middleware
 Route::post('/invoice-delete',[InvoiceController::class,'invoiceDelete'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/invoice-details',[InvoiceController::class,'invoiceDetails'])->middleware([TokenVerificationMiddleware::class]);
 //page
+Route::get('/sales',[InvoiceController::class,'sales'])->middleware([TokenVerificationMiddleware::class]);
 Route::get('/invoice',[InvoiceController::class,'invoice'])->middleware([TokenVerificationMiddleware::class]);
-Route::get('/invoice-list',[InvoiceController::class,'invoiceReportList'])->middleware([TokenVerificationMiddleware::class]);
+
+// report api
+
+Route::get('/report',[ReportController::class,'reportPage'])->middleware([TokenVerificationMiddleware::class]);

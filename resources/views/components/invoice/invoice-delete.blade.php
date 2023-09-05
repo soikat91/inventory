@@ -4,7 +4,7 @@
             <div class="modal-body text-center">
                 <h3 class=" mt-3 text-warning">Delete !</h3>
                 <p class="mb-3">Once delete, you can't get it back.</p>
-                <input class="d-none" id="deleteID"/>
+                <input class="" id="deleteID"/>
             </div>
             <div class="modal-footer justify-content-end">
                 <div>
@@ -31,4 +31,21 @@
     //             errorToast("Request fail!")
     //         }
     //  }
+
+   
+    async function itemDelete(){
+            
+        let deleteId=document.getElementById('deleteID').value
+        document.getElementById('delete-modal-close').click();
+        let res=await axios.post('/invoice-delete',{invoice_id:deleteId})
+
+        if(res.data===1){
+
+            successToast("Delete Success")
+            await getList()
+        }else{
+
+            errorToast("Request Failed")
+        }
+    }
 </script>

@@ -345,7 +345,7 @@ let productlist=[];
 
                 if(res.data){
 
-                    window.location.href="/invoice-list"
+                    window.location.href="/invoice"
                     successToast("Invoice Created")
                     
                 }else{

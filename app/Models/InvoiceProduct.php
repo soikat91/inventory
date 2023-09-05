@@ -9,4 +9,9 @@ class InvoiceProduct extends Model
 {
     use HasFactory;
     protected $fillable=['user_id','product_id','invoice_id','qty','sale_price'];
+
+    function product(){
+
+        return $this->belongsTo(Product::class);
+    }
 }

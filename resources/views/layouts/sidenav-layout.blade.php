@@ -97,11 +97,15 @@
         <i class="fa fa-chevron-circle-right  text-dark"></i>
         <span class="side-bar-item-caption">Product</span>
     </a>
+    <a href="{{url("/sales")}}" class="side-bar-item">
+        <i class="fa fa-chevron-circle-right  text-dark"></i>
+        <span class="side-bar-item-caption">Create Sales</span>
+    </a>
     <a href="{{url("/invoice")}}" class="side-bar-item">
         <i class="fa fa-chevron-circle-right  text-dark"></i>
         <span class="side-bar-item-caption">Invoice</span>
     </a>
-    <a href="{{url("/dashboard")}}" class="side-bar-item">
+    <a href="{{url("/report")}}" class="side-bar-item">
         <i class="fa fa-chevron-circle-right  text-dark"></i>
         <span class="side-bar-item-caption">Report</span>
     </a>

@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {   
-    function invoice(){
+    function sales(){
         return view('pages.dashboard.sale-page');
 
     } 
 
 
-    function invoiceReportList(){
+    function invoice(){
         return view('pages.dashboard.invoice-page');
     }
     function invoiceCreate(Request $request){      
@@ -95,7 +95,7 @@ class InvoiceController extends Controller
 
         $customer=Customer::where('user_id',$userId)->where('id',$request->input('cus_id'))->first();
         $invoice=Invoice::where('user_id',$userId)->where('id',$request->input('inv_id'))->first();
-        $InvoiceProduct=InvoiceProduct::where('user_id',$userId)->where('invoice_id',$request->input('inv_id'))->get();
+        $InvoiceProduct=InvoiceProduct::where('user_id',$userId)->where('invoice_id',$request->input('inv_id'))->with('product')->get();
 
         return [
             'customer'=>$customer,
