@@ -35,4 +35,17 @@
 
     // }
 
+    function SalesReport(){
+        let formDate=document.getElementById('FormDate').value;
+        let toDate=document.getElementById('ToDate').value;
+
+        if(formDate.length===00 || toDate.length===0){
+            errorToast("Date is Required")
+        }else{
+            window.open('/sales-report/'+formDate+'/'+toDate)
+        }
+    }
+
+
+
 </script>

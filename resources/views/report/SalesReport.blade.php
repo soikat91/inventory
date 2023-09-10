@@ -51,6 +51,14 @@
         <td>{{$vat}}</td>
         <td>{{$payable}} </td>
     </tr> --}}
+        <tr>
+            <td>Sales Report</td>
+            <td>{{ $FormDate}} to {{ $ToDate }}</td>
+            <td>{{ $total }}</td>
+            <td>{{ $discount }}</td>
+            <td>{{ $vat }}</td>
+            <td>{{ $payable }}</td>
+        </tr>
     </tbody>
 </table>
 
@@ -82,6 +90,20 @@
             <td>{{$item->created_at }}</td>
         </tr>
     @endforeach --}}
+
+    @foreach ($list as $item )
+    <tr>
+        <td>{{ $item['customer']['name'] }}</td>
+        <td>{{ $item['customer']['mobile'] }}</td>
+        <td>{{ $item['customer']['email'] }}</td>
+        <td>{{ $item['total'] }}</td>
+        <td>{{ $item['discount'] }}</td>
+        <td>{{ $item['vat'] }}</td>
+        <td>{{ $item['payable'] }}</td>
+        <td>{{ $item['created_at'] }}</td>
+    </tr>
+        
+    @endforeach
 
     </tbody>
 </table>

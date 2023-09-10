@@ -103,3 +103,4 @@ Route::get('/invoice',[InvoiceController::class,'invoice'])->middleware([TokenVe
 // report api
 
 Route::get('/report',[ReportController::class,'reportPage'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/sales-report/{fromDate}/{toDate}',[ReportController::class,'saleReport'])->middleware([TokenVerificationMiddleware::class]);
